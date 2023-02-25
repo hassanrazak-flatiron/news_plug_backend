@@ -1,0 +1,2 @@
+class TopHeadline < ApplicationRecord
+end
