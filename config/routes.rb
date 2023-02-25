@@ -11,5 +11,8 @@ Rails.application.routes.draw do
 
   ### login ###
   post '/login', to: 'sessions#create'
+  
+  ### ME ###
+  get '/me', to: 'users#show'
 
 end
