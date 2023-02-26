@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stories
   resources :top_headlines
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -17,5 +18,9 @@ Rails.application.routes.draw do
   
   ### logout ###
   delete '/logout', to: 'sessions#destroy'
+
+  get '/stories', to: 'stories#index'
+  
+  get '/cnn', to: 'stories#show'
 
 end

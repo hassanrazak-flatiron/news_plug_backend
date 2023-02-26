@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_23_172658) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_26_152600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "stories", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "date"
+    t.string "source"
+    t.string "description"
+    t.string "url"
+    t.string "img_url"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "top_headlines", force: :cascade do |t|
     t.string "title"
