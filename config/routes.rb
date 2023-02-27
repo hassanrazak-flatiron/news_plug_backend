@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
 # returns all the headlines from the Top Headlines table
-  get '/headlines', to: 'top_headlines#index'
+  get '/headlines', to: 'stories#show'
 
   ### signup ###
   post '/signup', to: 'users#create'
@@ -21,6 +21,6 @@ Rails.application.routes.draw do
 
   get '/stories', to: 'stories#index'
   
-  get '/cnn', to: 'stories#show'
+  get '/search_stories/:search', to: 'stories#search_stories'
 
 end
