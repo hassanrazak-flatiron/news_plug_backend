@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+    skip_before_action:authorize, only: :create
 
     def create
         # binding.break
@@ -9,7 +10,8 @@ class UsersController < ApplicationController
     end
 
     def show
-        render json: User.find_by(id: session[:user_id])
+        # render json: User.find_by(id: session[:user_id])
+        render json: @current_user
     end
 
 

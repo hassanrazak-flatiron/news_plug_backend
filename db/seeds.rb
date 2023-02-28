@@ -14,7 +14,7 @@ puts "Seeding Headlines..."
 category = ['business','health','science','technology']
 
 category.each{ |c|
-    tophdl = RestClient.get "https://newsapi.org/v2/everything?q=#{category}&apiKey=4a5f31c8ffa748dab1bdf9a6acbf394e"
+    tophdl = RestClient.get "https://newsapi.org/v2/everything?q=#{c}&apiKey=4a5f31c8ffa748dab1bdf9a6acbf394e"
     tophdl_resp = JSON.parse(tophdl.body)
     
     tophdl_articles = tophdl_resp["articles"]

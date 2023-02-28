@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   
+  skip_before_action:authorize, only: :create
   def create
     logged_in = User.find_by(email: params[:email])
     if logged_in&.authenticate(params[:password])
@@ -8,6 +9,10 @@ class SessionsController < ApplicationController
     else
       render json: {error:["invalid email or password combination"]}, status: :unauthorized
     end
+  end
+
+  def show
+    render json: @current_user
   end
 
   def destroy

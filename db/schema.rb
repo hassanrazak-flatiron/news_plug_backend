@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_26_152600) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_28_181141) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "my_articles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "story_id", null: false
+    t.bigint "top_headline_id"
+    t.string "summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_my_articles_on_story_id"
+    t.index ["top_headline_id"], name: "index_my_articles_on_top_headline_id"
+    t.index ["user_id"], name: "index_my_articles_on_user_id"
+  end
 
   create_table "stories", force: :cascade do |t|
     t.string "title"
@@ -49,4 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_152600) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "my_articles", "stories"
+  add_foreign_key "my_articles", "top_headlines"
+  add_foreign_key "my_articles", "users"
 end
