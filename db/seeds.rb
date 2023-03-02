@@ -10,6 +10,17 @@ require 'rest-client'
 require 'json'
 # require "awesome_print"
 
+
+puts "Seeding users"
+
+User.create(
+    first_name:"Hassan",
+    last_name:"Razak",
+    email:"hr@1.com",
+    password:"123",
+    password_confirmation:"123"
+    )
+
 puts "Seeding Headlines..."
 category = ['business','health','science','technology']
 
@@ -94,3 +105,5 @@ q.each{ |q|
 
 
 puts "Stories created."
+
+

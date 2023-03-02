@@ -1,11 +1,12 @@
 class StoriesController < ApplicationController
 
+    skip_before_action:authorize, only: [:index]
     def index
         render json: Story.all
     end
 
     def show
-        render json: Story.first(10)
+        render json: Story.find(id:params[:id])
     end
 
     def search_stories
