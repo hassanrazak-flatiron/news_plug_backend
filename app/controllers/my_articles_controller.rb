@@ -29,7 +29,7 @@ class MyArticlesController < ApplicationController
     private
 
     def article_params
-        params.permit(:user_id,:story_id,:top_headline_id,:summary)
+        params.permit(:user_id,:story_id,:top_headline_id,:workflow)
     end
 
 
