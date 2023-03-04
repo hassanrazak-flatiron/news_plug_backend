@@ -34,6 +34,8 @@ Rails.application.routes.draw do
  ########## MY ARTICLES #################
 
  get '/saved_articles', to: 'my_articles#saved_articles'
+
+ delete '/my_articles/:id', to: 'my_articles#destroy' 
  
 
   

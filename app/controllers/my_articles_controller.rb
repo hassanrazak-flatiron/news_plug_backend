@@ -11,9 +11,16 @@ class MyArticlesController < ApplicationController
     end
 
     def create
-        binding.break
+        # binding.break
         new_article = MyArticle.create!(article_params)
         render json: new_article
+    end
+
+    def destroy
+        # binding.break
+        article = MyArticle.find_by(story_id:params[:id])
+        article.destroy
+        # head: :no_content
     end
 
     ### custom route #####
