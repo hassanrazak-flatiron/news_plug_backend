@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
 
-    skip_before_action:authorize, only: [:index]
+    skip_before_action:authorize, only: [:index,:search_stories]
+    
     def index
         render json: Story.all
     end

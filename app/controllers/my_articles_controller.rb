@@ -1,5 +1,5 @@
 class MyArticlesController < ApplicationController
-
+    skip_before_action:authorize, only: :index
 
     def index
         render json: MyArticle.all
@@ -26,6 +26,7 @@ class MyArticlesController < ApplicationController
     ### custom route #####
 
     def saved_articles
+        # binding.break
         my_articles = MyArticle.where(user_id:@current_user.id)
         render json: my_articles
     end

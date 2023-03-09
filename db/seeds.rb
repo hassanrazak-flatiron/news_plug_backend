@@ -10,6 +10,8 @@ require 'rest-client'
 require 'json'
 # require "awesome_print"
 
+# TopHeadline.destroy_all
+# Story.destroy_all
 
 puts "Seeding users"
 
@@ -22,7 +24,7 @@ User.create(
     )
 
 puts "Seeding Headlines..."
-category = ['business','health','science','technology']
+category = ['putin','biden','federalreserve','wallstreet']
 
 category.each{ |c|
     tophdl = RestClient.get "https://newsapi.org/v2/everything?q=#{c}&apiKey=4a5f31c8ffa748dab1bdf9a6acbf394e"
@@ -31,17 +33,17 @@ category.each{ |c|
     tophdl_articles = tophdl_resp["articles"]
 
     tophdl_articles_no_null = tophdl_articles.select{ |a|
-        a['title'] !=nil || 
-        a['author'] != nil || 
-        a['publishedAt'] != nil ||
-        a['description'] !=nil || 
-        a['url'] != nil || 
-        a['urlToImage']!=nil || 
-        a['content'] !=nil || 
+        a['title'] !=nil && 
+        a['author'] != nil && 
+        a['publishedAt'] != nil &&
+        a['description'] !=nil && 
+        a['url'] != nil && 
+        a['urlToImage']!=nil && 
+        a['content'] !=nil && 
         a["source"]["name"] !=nil
     }
 
-    tophdl_display = tophdl_articles_no_null[0,2]
+    tophdl_display = tophdl_articles_no_null[3,10]
 
 
     tophdl_display.each { |a|
@@ -63,8 +65,8 @@ puts "Headlines Created......."
 
 puts "Seeding Stories..."
 
-q = ['ukraine','military','economy','usgovernment','middleeast' ]
-n = ['nbcnews.com','cbsnews.com','cnn.com','npr.org','politico.com']
+q = ['putin','biden','wallstreet','election','civil' ]
+n = ['cbsnews.com','cnn.com','npr.org','politico.com','alternet.org','commondreams.org']
 
 q.each{ |q|
     n.each{ |n|
@@ -75,13 +77,13 @@ q.each{ |q|
     arts = sa["articles"]
 
     arts_no_null = arts.select{ |a|
-        a['title'] !=nil || 
-        a['author'] != nil || 
-        a['publishedAt'] != nil ||
-        a['description'] !=nil || 
-        a['url'] != nil || 
-        a['urlToImage']!=nil || 
-        a['content'] !=nil || 
+        a['title'] !=nil && 
+        a['author'] != nil && 
+        a['publishedAt'] != nil &&
+        a['description'] !=nil && 
+        a['url'] != nil && 
+        a['urlToImage']!=nil && 
+        a['content'] !=nil && 
         a["source"]["name"] !=nil
     }
 

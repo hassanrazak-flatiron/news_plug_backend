@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_03_001351) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_05_232005) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hot_takes", force: :cascade do |t|
+    t.bigint "my_article_id", null: false
+    t.string "title"
+    t.string "summary"
+    t.string "tags"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["my_article_id"], name: "index_hot_takes_on_my_article_id"
+  end
 
   create_table "my_articles", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -61,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_03_001351) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "hot_takes", "my_articles"
   add_foreign_key "my_articles", "stories"
   add_foreign_key "my_articles", "top_headlines"
   add_foreign_key "my_articles", "users"
