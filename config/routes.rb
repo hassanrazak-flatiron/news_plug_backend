@@ -39,6 +39,9 @@ Rails.application.routes.draw do
  delete '/my_articles/:id', to: 'my_articles#destroy' 
  
 
+ ######## Hot Take #######################
+
+ get "/saved_takes/:user", to:"hot_takes#saved_takes" 
   
 
 

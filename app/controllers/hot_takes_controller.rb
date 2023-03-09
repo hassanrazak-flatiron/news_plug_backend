@@ -10,7 +10,7 @@ class HotTakesController < ApplicationController
     end
 
     def show
-        binding.break
+        # binding.break
         # render json: HotTake.where()
     end
 
@@ -18,6 +18,14 @@ class HotTakesController < ApplicationController
         render json: HotTake.create!(hottake_params)
 
     end
+
+    ######## custom method ###############
+
+    def saved_takes
+        # binding.break
+        render json: MyArticle.where(user_id:@current_user)
+    end
+
 
     
 
